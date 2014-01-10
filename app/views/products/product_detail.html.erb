@@ -1,0 +1,30 @@
+<%- model_class = Product -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:avatar_content_type) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @product_detail.each do |product| %>
+   <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+      <td><%= image_tag product.avatar.url %></td>
+      <% @name_first=User.find(product.user_id) %>
+      <td><%=@name_first.first_name %></td>
+      <td><%=@name_first.last_name %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_product_path,
+            :class => 'btn btn-primary' %>
+

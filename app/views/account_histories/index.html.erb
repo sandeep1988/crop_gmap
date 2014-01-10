@@ -1,0 +1,23 @@
+<h1>Listing account_histories</h1>
+
+<table>
+  <tr>
+    <th>Credit rating</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @account_history.each do |account_history| %>
+  <tr>
+    <td><%= account_history.credit_rating %></td>
+    <td><%#= link_to 'Show', account_history %></td>
+    <td><%#= link_to 'Edit', edit_account_history_path(account_history) %></td>
+    <td><%#= link_to 'Destroy', account_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%#= link_to 'New Account history', new_account_history_path %>

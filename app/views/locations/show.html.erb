@@ -1,0 +1,31 @@
+<ul>
+<% for location in @location.nearbys(10) %>
+  <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)</li>
+<% end %>
+<p>
+  <strong>Address:</strong>
+  <%= @location.address %>
+</p>
+<p>
+  <strong>Latitude:</strong>
+  <%= @location.latitude %>
+</p>
+<p>
+  <strong>Longitude:</strong>
+  <%= @location.longitude %>
+</p>
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}" %>
+	
+
+<div class="form-actions">
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_location_path(@location), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              location_path(@location),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
+
+

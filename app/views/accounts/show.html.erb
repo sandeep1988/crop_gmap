@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <b>Account number:</b>
+  <%= @account.account_number %>
+</p>
+<%#= link_to 'Edit', edit_account_path(@account) %> 
+<%= link_to 'Rating', new_account_account_history_path(@account) %>
+<%#= link_to 'Create Rating',new_account_account_history_path(@supplier,@account) %>
+
